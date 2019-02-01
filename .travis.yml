@@ -6,7 +6,7 @@ addons:
     packages:
     - atlassian-plugin-sdk -q
 
-script: atlas-clean -q && atlas-compile -q && atlas-unit-test -q && atlas-integration-test -q
+script: atlas-clean -q && travis_wait atlas-integration-test -q
 
 deploy:
   provider: releases
