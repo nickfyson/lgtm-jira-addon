@@ -1,10 +1,21 @@
-
 addons:
   apt:
     sources:
-    - sourceline: 'deb https://packages.atlassian.com/atlassian-sdk-deb stable contrib'
-      key_url: 'https://packages.atlassian.com/api/gpg/key/public'
+    - sourceline: deb https://packages.atlassian.com/atlassian-sdk-deb stable contrib
+      key_url: https://packages.atlassian.com/api/gpg/key/public
     packages:
     - atlassian-plugin-sdk -q
 
 script: atlas-clean -q && atlas-compile -q && atlas-unit-test -q && atlas-integration-test -q
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_OAUTH_TOKEN
+  file: target/lgtm-jira-addon-0.1.0.jar
+  skip_cleanup: true
+  on:
+    tags: true
+
+env:
+  global:
+  - secure: JO9naRm2XagWk6jCVbzd3KgXOrygvO0XwfzEhEDhkR1a+qHL/UKMrKU2gJ2eXv1Cad+gw5qckONysLxxHtzZWUI8j/yZogtaMRjA0ydcxNTRX2vr1k04n0LLzsc4xtbxDifT+qWWdrxIUAW7Eler5hUatYivWG2Jvp2UbDZ2L0kYwsjHpaq/S6hY4E0emTZzdJAsi6QVEJPG1JhJCT3Meti8SoSIOfhFiXDSHDg62sOO6mM24seEaE5IuuJXt+lts4Av3KdMga9zITmyjs4ttIyli49GwQNn7XxM5oVuu2L/EKlaouVrj9yGBB0AHcl97e5qG+evE6VUfuvZfVOYnWa9BVmq9T4/fTAEbjGT634MBoQrQXpbigm3YXy74f5BNhGYBYWfcIp2NwY1YU/zkORVQ26C8xbd8bYhO37NgP4/8yBmhMx3oL70UA0Mc94tvu32Rk8cpowJXOd5IqXhRjMCg+YEA/DU01u8aLz5M+eO0Ki3hejRXfww9tSzXJAb8x9v2Pb+HISqx2C+ptpKmfurqG9i5fokgiBRzQagM3DiF8tKr+3lmP/YKkyNYua6+xm8k7fZXmQqNSGK+CgmzeNAj2E2GXCoAZtgahZX/KdStzCY5l/+dG5PfQJvDJVHkXLS8XM8drrM+fCQVsS6Y29JdbXTA3SfMJjJDUhnWjE=
