@@ -43,3 +43,4 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+  env: JIRA_VERSION=7.13.1
