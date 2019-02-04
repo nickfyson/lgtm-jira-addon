@@ -1,5 +1,12 @@
 language: java
 
+# only build automatically for the master branch
+branches:
+  only:
+  - master
+# NB PRs should also be built automatically
+
+# ensure Atlassian SDK is installed
 addons:
   apt:
     sources:
@@ -8,8 +15,10 @@ addons:
     packages:
     - atlassian-plugin-sdk -q
 
+# skip the default install step defined for java
 install: true
 
+# define a custom build step
 script: atlas-clean -q && travis_wait atlas-integration-test -q
 
 deploy:
@@ -20,4 +29,4 @@ deploy:
   file: target/lgtm-jira-addon-*.jar
   skip_cleanup: true
   on:
-    tags: false
+    tags: true
