@@ -14,12 +14,25 @@ addons:
       key_url: https://packages.atlassian.com/api/gpg/key/public
     packages:
     - atlassian-plugin-sdk -q
+    
+# test against all supported versions of Jira
+env:
+  - JIRA_VERSION=7.13.1
+  - JIRA_VERSION=7.12.3
+  - JIRA_VERSION=7.11.2
+  - JIRA_VERSION=7.10.2
+  - JIRA_VERSION=7.9.2
+  - JIRA_VERSION=7.8.4
+  - JIRA_VERSION=7.7.4
+  - JIRA_VERSION=7.6.11
+  - JIRA_VERSION=7.5.4
+  - JIRA_VERSION=7.4.6
 
 # skip the default install step defined for java
 install: true
 
 # define a custom build step
-script: atlas-clean -q && travis_wait atlas-integration-test -q
+script: atlas-clean -q && travis_wait atlas-integration-test -q -Djira.version=$JIRA_VERSION
 
 deploy:
   provider: releases
