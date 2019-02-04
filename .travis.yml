@@ -1,3 +1,4 @@
+
 addons:
   apt:
     sources:
@@ -10,12 +11,9 @@ script: atlas-clean -q && travis_wait atlas-integration-test -q
 
 deploy:
   provider: releases
-  api_key: $GITHUB_OAUTH_TOKEN
+  api_key:
+     secure: CLkdteUkUcKYPoEV+2dO/7IBR/HbMn3bsvMVz7IWKkrSh86IEsaW22CqjyqHlo+f4wI5Sug3fLvRcUBHgNsL4AA7ha1N2mH1kgOXiPgU2a/HGDEdeRMEJ7ngg/ilcDkeplx/aLVdDhKRKefmXqy+qJulkUinhXfTlyifKogYxH1Gt7bS6HXnHFCcNty/wXykjPx5IwE9/I2MXgg+dJiTrdEyTD+BDiXhIqqm4ORscf1SzbZ2Uqy9fWsJWWWm6YJMqB4eSHua3/EvOwVCTVc4BB/tXu18Ex3ex7epi2QF6YidI27jrUUOr8ccsSik7FBlabG8es7MvMTMlFAgOuOZQCgYQYs+0LPXuWkidzGRhtuMmp4ORWKZRTwT1AQ9wxlViH8HLwwhcOUl1cO2Tq7kLmgc0301Te3lp/GMMENlRy0yVJMKe6w8Jwrh4QSTeg2ie9HOqqzhm48oGCMGY083qzYxX2EDTrhliNRMZVM0+6KLnI5tGzDmiPp5PdVedNGHXeMjXgcg1uOqeUTNT05rZpbQ0iW8w4K0AmjjuwwsvnXx6Fg4ke/699uVPAEyQf181D/IYFVQ4wqKT+6t4ynfeWomVj5/xpMMZrp2NwfDUQQrmyp0Jmi+wlFiAuvJhin3oTxRB5btz6dm2ipI4ptzGNq5RAVU9FzvLt9bdeGEf1M=
   file: target/lgtm-jira-addon-0.1.0.jar
   skip_cleanup: true
   on:
     tags: true
-
-env:
-  global:
-  - secure: JO9naRm2XagWk6jCVbzd3KgXOrygvO0XwfzEhEDhkR1a+qHL/UKMrKU2gJ2eXv1Cad+gw5qckONysLxxHtzZWUI8j/yZogtaMRjA0ydcxNTRX2vr1k04n0LLzsc4xtbxDifT+qWWdrxIUAW7Eler5hUatYivWG2Jvp2UbDZ2L0kYwsjHpaq/S6hY4E0emTZzdJAsi6QVEJPG1JhJCT3Meti8SoSIOfhFiXDSHDg62sOO6mM24seEaE5IuuJXt+lts4Av3KdMga9zITmyjs4ttIyli49GwQNn7XxM5oVuu2L/EKlaouVrj9yGBB0AHcl97e5qG+evE6VUfuvZfVOYnWa9BVmq9T4/fTAEbjGT634MBoQrQXpbigm3YXy74f5BNhGYBYWfcIp2NwY1YU/zkORVQ26C8xbd8bYhO37NgP4/8yBmhMx3oL70UA0Mc94tvu32Rk8cpowJXOd5IqXhRjMCg+YEA/DU01u8aLz5M+eO0Ki3hejRXfww9tSzXJAb8x9v2Pb+HISqx2C+ptpKmfurqG9i5fokgiBRzQagM3DiF8tKr+3lmP/YKkyNYua6+xm8k7fZXmQqNSGK+CgmzeNAj2E2GXCoAZtgahZX/KdStzCY5l/+dG5PfQJvDJVHkXLS8XM8drrM+fCQVsS6Y29JdbXTA3SfMJjJDUhnWjE=
