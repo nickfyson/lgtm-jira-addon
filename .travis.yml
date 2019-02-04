@@ -19,8 +19,6 @@ addons:
 env:
   - JIRA_VERSION=7.13.1
   - JIRA_VERSION=7.12.3
-  - JIRA_VERSION=7.5.4
-  - JIRA_VERSION=7.4.6
 
 # skip the default install step defined for java
 install: true
